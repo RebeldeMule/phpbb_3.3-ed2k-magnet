@@ -3,14 +3,14 @@
     "type": "phpbb-extension",
     "description": "Muestra los enlaces ed2k y magnet en los mensajes.",
     "homepage": "https://www.rebeldemule.org/",
-    "version": "1.0.2",
+    "version": "1.0.1",
     "time": "2026-02-02",
     "license": "GPL-2.0-only",
     "authors": [
         {
             "name": "RebeldeMule",
-            "email": "",
-            "homepage": "",
+            "email": "contacto@rebeldemule.org",
+            "homepage": "https://www.rebeldemule.org/",
             "role": ""
         }
     ],

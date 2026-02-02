@@ -8,12 +8,6 @@
  * @copyright (c) 2024, RebeldeMule
  * @license GNU General Public License, version 2 (GPL-2.0)
  *
- ***** OJO BUG **** Si un enlace magnet contiene alguna URL para añadir trackers,
- *					el enlace se romperá al mostrarlo en el foro.
- *					Esto es un fallo conocido y no tengo solución por ahora.
- *					La solución temporal de "No convertir automáticamente las URLs".
- *					Para ello he añadido 'S_MAGIC_URL_CHECKED' => ' checked', a $template en la extensión "publica" por defecto. @main_listener.php#65
- *					Y en la base de datos he puesto el campo enable_magic_url de la tabla phpbb3_posts a 0.
  */
 
 namespace rbm\ed2k\event;
@@ -29,11 +23,17 @@ class main_listener implements EventSubscriberInterface
 
 	public function __construct(
 		\phpbb\language\language $language,
+		\phpbb\request\request_interface $request,
 		$phpbb_root_path
 	) {
 		$this->language = $language;
-        $this->phpbb_root_path = $phpbb_root_path;
-		$this->icon_url = $phpbb_root_path . "ext/rbm/ed2k/styles/all/theme/images/";
+		// Obtener la ruta base del script mediante el servicio request
+		$script_name = $request->server('SCRIPT_NAME', '');
+		$script_dir = $script_name ? dirname($script_name) : '';
+		$script_dir = rtrim($script_dir, '/\\');
+		$base = $script_dir === '' ? '/' : $script_dir . '/';
+		$this->phpbb_root_path = $phpbb_root_path;
+		$this->icon_url = $base . 'ext/rbm/ed2k/styles/all/theme/images/';
 	}
 
 	public static function getSubscribedEvents()

@@ -3,6 +3,7 @@ services:
         class: rbm\ed2k\event\main_listener
         arguments:
             - '@language'
+            - '@request'
             - '%core.root_path%'
         tags:
             - { name: event.listener }
