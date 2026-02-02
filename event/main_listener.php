@@ -25,6 +25,7 @@ class main_listener implements EventSubscriberInterface
 	protected $language;
     protected $phpbb_root_path;
 	protected $icon_url;
+	private $msg_counter = 0; // Para IDs únicos por mensaje
 
 	public function __construct(
 		\phpbb\language\language $language,
@@ -58,6 +59,8 @@ class main_listener implements EventSubscriberInterface
 
 	private function ed2k_link_callback($m)
 	{
+		$this->msg_counter++;
+		$msg_id = 'ed2k-magnet-' . $this->msg_counter;
 		// Deserialización y limpieza básica
 		$url = $m[2];
 		$filename = rawurldecode($m[3]);
@@ -78,7 +81,8 @@ class main_listener implements EventSubscriberInterface
 
 		// Construcción del checkbox
 		$checkbox = sprintf(
-			'<input type="checkbox" class="ed2k-magnet-checkbox" data-raw="%s" />',
+			'<input type="checkbox" id="%s" class="ed2k-magnet-checkbox" data-raw="%s" />',
+			$msg_id,
 			$url_html
 		);
 
@@ -96,6 +100,8 @@ class main_listener implements EventSubscriberInterface
 
 	private function magnet_callback($mf)
 	{
+		$this->msg_counter++;
+		$msg_id = 'ed2k-magnet-' . $this->msg_counter;
 		// Guardamos el enlace magnet original antes de cualquier procesamiento
 		$original_magnet = 'magnet:' . $mf[1];
 		
@@ -120,18 +126,20 @@ class main_listener implements EventSubscriberInterface
 		
 		// Usamos el enlace original para el data-raw, codificado para HTML pero sin procesar las URLs
 		$raw = urldecode(str_replace('"', '&quot;', $magnet_link));
-		$checkbox = "<input type='checkbox' class='ed2k-magnet-checkbox' data-raw=\"$raw\" />";
+		// Construcción del checkbox
+		$checkbox = sprintf(
+			'<input type="checkbox" id="%s" class="ed2k-magnet-checkbox" data-raw="%s" />',
+			$msg_id,
+			$raw
+		);
 		
 		// Para el enlace visible y el href, usamos el enlace procesado normalmente
 		return "$checkbox <img src='{$this->icon_url}magnet.gif' alt='Magnet' title='Torrent Magnet'> <a href='" . htmlspecialchars($magnet_link) . "' class=\"postlink\">" . htmlspecialchars($magnet_name) . "</a>";
 	}
 
-	private $msg_counter = 0; // Para IDs únicos por mensaje
 
 	private function procesar_ed2k($message)
 	{
-		$this->msg_counter++;
-		$msg_id = 'ed2k-magnet-msg-' . $this->msg_counter;
 
 		$patterns = [
 			'#\[url\](ed2k://\|file\|(.*?)\|\d+\|\w+\|(h=\w+\|)?/?)\[/url\]#is',
@@ -150,7 +158,7 @@ class main_listener implements EventSubscriberInterface
 		$message = preg_replace_callback(
 			"#\[url\]magnet:([^\[]+)\[/url\]#is",
 			[$this, 'magnet_callback'],
-			$message
+			$message,
 		);
 		return $message;
 	}
