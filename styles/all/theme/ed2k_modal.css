@@ -1,0 +1,160 @@
+/* FILE: styles/all/theme/ed2k_modal.css */
+
+/* Botón flotante */
+#ed2k-modal-trigger-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    font-size: 1em;
+    opacity: 0.9;
+    transition: opacity 0.2s ease-in-out;
+}
+
+#ed2k-modal-trigger-btn:hover {
+    background-color: #0056b3;
+    opacity: 1;
+}
+
+#ed2k-modal-trigger-btn img {
+    height: 16px;
+    /* Ajustar si necesario */
+    width: auto;
+    border: 0;
+}
+
+
+/* Overlay del Modal (fondo oscuro) */
+#ed2k-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1001;
+    display: flex;
+    /* Usado con flex en el JS */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenido del Modal */
+#ed2k-modal-content {
+    background-color: var(--color-2, #e5e5e5);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    position: relative;
+    /* Para posicionar el botón de cerrar */
+    width: 80%;
+    max-width: 700px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+#ed2k-modal-content h3 {
+    margin-top: 5px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+/* Botón de Cerrar */
+#ed2k-modal-close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#ed2k-modal-close:hover,
+#ed2k-modal-close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+/* Textarea */
+#ed2k-links-list {
+    width: 100%;
+    box-sizing: border-box;
+    /* Incluye padding y border en el width */
+    margin-bottom: 10px;
+    font-family: monospace;
+    background-color: var(--color-3, #ffffff);
+    border: 1px solid #ccc;
+    padding: 8px;
+    resize: vertical;
+    min-height: 150px;
+}
+
+/* Botón de copiar y feedback */
+.ed2k-modal-actions {
+    text-align: right;
+    margin-top: 5px;
+}
+
+#ed2k-copy-btn {
+    padding: 6px 10px;
+    cursor: pointer;
+}
+
+#ed2k-copy-feedback {
+    color: #28a745;
+    /* Verde */
+    font-weight: bold;
+    margin-left: 15px;
+    display: inline-block;
+    /* Asegura que fadeIn/Out funciona bien */
+}
+
+.ed2k-stats {
+    font-size: 19px;
+    padding-top: 2px;
+    font-weight: bold;
+}
+
+.contenedor-elink {
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    width: 100%;
+}
+
+.contenedor-elink input,
+.contenedor-elink .icono-link {
+    flex-shrink: 0;
+    /* Mantiene el checkbox e icono fijos a la izquierda */
+    margin-top: 3px;
+}
+
+.texto-y-stats {
+    /* No usamos flex aquí para que el contenido fluya como texto */
+    word-break: break-all;
+    overflow-wrap: anywhere;
+    line-height: 1.4;
+}
+
+.link-stats {
+    display: inline-block;
+    /* Permite que la imagen se comporte como parte del texto */
+    vertical-align: middle;
+    margin-left: 4px;
+    /* Pequeño espacio entre el texto y la estadística */
+}
+
+.link-stats img {
+    display: inline;
+    /* Asegura que no salte de línea solo */
+}
