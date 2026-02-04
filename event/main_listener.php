@@ -102,6 +102,12 @@ class main_listener implements EventSubscriberInterface
 	{
 		$this->msg_counter++;
 		$msg_id = 'ed2k-magnet-' . $this->msg_counter;
+
+		// Decodificar si el enlace viene urlencoded (por ejemplo desde posting_preview_ed2k)
+		if (strpos($mf[1], '=') === false && strpos($mf[1], '%') !== false) {
+			$mf[1] = urldecode($mf[1]);
+		}
+
 		// Guardamos el enlace magnet original antes de cualquier procesamiento
 		$original_magnet = 'magnet:' . $mf[1];
 		
@@ -140,6 +146,14 @@ class main_listener implements EventSubscriberInterface
 
 	private function procesar_ed2k($message)
 	{
+		// Decodificamos el enlace magnet para procesarlo
+		$message = preg_replace_callback(
+			'#\[url\]magnet:(.*?)\[/url\]#is',
+			function ($matches) {
+				return '[url]magnet:' . urlencode($matches[1]) . '[/url]';
+			},
+			$message
+		);
 
 		$patterns = [
 			'#\[url\](ed2k://\|file\|(.*?)\|\d+\|\w+\|(h=\w+\|)?/?)\[/url\]#is',
