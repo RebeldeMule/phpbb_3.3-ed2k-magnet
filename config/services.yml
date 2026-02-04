@@ -2,7 +2,8 @@ services:
     rbm.ed2k.listener:
         class: rbm\ed2k\event\main_listener
         arguments:
-            - '@language'
+            - '@template'
+            - '@user'
             - '@request'
             - '%core.root_path%'
         tags:

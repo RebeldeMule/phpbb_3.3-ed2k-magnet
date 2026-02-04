@@ -35,7 +35,14 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, [
-
-	'ED2K_EVENT'		=> ' :: Evento Ed2k :: ',
+	'ED2K_BTN_TITLE' => 'Ver/Copiar enlaces seleccionados',
+	'ED2K_ALT_ED2K' => 'eD2K',
+	'ED2K_ALT_MAGNET' => 'Magnet',
+	'ED2K_MODAL_CLOSE' => 'Cerrar',
+	'ED2K_MODAL_TITLE' => 'Enlaces Seleccionados',
+	'ED2K_MODAL_TEXTAREA_LABEL' => 'Lista de enlaces seleccionados',
+	'ED2K_MODAL_SEND' => 'Enviar enlaces a la aplicación',
+	'ED2K_MODAL_COPY' => 'Copiar al Portapapeles',
+	'ED2K_MODAL_COPIED' => '¡Copiado!',
 
 ]);

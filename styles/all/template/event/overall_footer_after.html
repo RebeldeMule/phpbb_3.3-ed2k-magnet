@@ -2,24 +2,26 @@
 <!-- IF SCRIPT_NAME == 'viewtopic' -->
 <!-- INCLUDECSS @rbm_ed2k/ed2k_modal.css -->
 <!-- Botón Flotante -->
- <button id="ed2k-modal-trigger-btn" title="Ver/Copiar enlaces seleccionados" style="display:none;">
-     <img src="{ROOT_PATH}ext/rbm/ed2k/styles/all/theme/images/donkey.gif" alt="eD2K" style="vertical-align: middle;"> / 
-     <img src="{ROOT_PATH}ext/rbm/ed2k/styles/all/theme/images/magnet.gif" alt="Magnet" style="vertical-align: middle;"> 
-      <span style="vertical-align: middle;">(<span id="ed2k-count">0</span>)</span>
- </button>
+<button id="ed2k-modal-trigger-btn" title="{L_ED2K_BTN_TITLE}" style="display:none;">
+  <img src="{ROOT_PATH}ext/rbm/ed2k/styles/all/theme/images/donkey.gif" alt="{L_ED2K_ALT_ED2K}"
+    style="vertical-align: middle;"> /
+  <img src="{ROOT_PATH}ext/rbm/ed2k/styles/all/theme/images/magnet.gif" alt="{L_ED2K_ALT_MAGNET}"
+    style="vertical-align: middle;">
+  <span style="vertical-align: middle;">(<span id="ed2k-count">0</span>)</span>
+</button>
 
- <!-- Estructura de la Ventana Modal -->
- <div id="ed2k-modal-overlay" style="display:none;">
-      <div id="ed2k-modal-content">
-         <span id="ed2k-modal-close" title="Cerrar">×</span>
-         <h3>Enlaces Seleccionados</h3>
-         <textarea id="ed2k-links-list" rows="15" readonly aria-label="Lista de enlaces seleccionados"></textarea>
-          <div class="ed2k-modal-actions">
-            <button id="ed2k-enviar" type="button" class="button"  style="float:inline-start">Enviar enlaces</button>
-            <button id="ed2k-copy-btn" type="button" class="button">Copiar al Portapapeles</button>
-            <span id="ed2k-copy-feedback" style="display:none;">¡Copiado!</span>
-           </div>
-     </div>
- </div>
- <!-- INCLUDEJS @rbm_ed2k/ed2k_modal.js -->
+<!-- Estructura de la Ventana Modal -->
+<div id="ed2k-modal-overlay" style="display:none;">
+  <div id="ed2k-modal-content">
+    <span id="ed2k-modal-close" title="{L_ED2K_MODAL_CLOSE}">×</span>
+    <h3>{L_ED2K_MODAL_TITLE}</h3>
+    <textarea id="ed2k-links-list" rows="15" readonly aria-label="{L_ED2K_MODAL_TEXTAREA_LABEL}"></textarea>
+    <div class="ed2k-modal-actions">
+      <button id="ed2k-enviar" type="button" class="button" style="float:inline-start">{L_ED2K_MODAL_SEND}</button>
+      <button id="ed2k-copy-btn" type="button" class="button">{L_ED2K_MODAL_COPY}</button>
+      <span id="ed2k-copy-feedback" style="display:none;">{L_ED2K_MODAL_COPIED}</span>
+    </div>
+  </div>
+</div>
+<!-- INCLUDEJS @rbm_ed2k/ed2k_modal.js -->
 <!-- ENDIF -->

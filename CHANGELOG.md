@@ -6,7 +6,11 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 
 ## [Unreleased]
 
-## [1.0.1] - 2026-02-04
+## [1.0.2] - 2026-02-04
+### Initial Release
+- Añadido soporte para múltiples idiomas.
+
+## [1.0.1] - 2026-02-02
 ### Initial Release
 - Solucionado el bug de las url en los magnet links.
 

@@ -16,17 +16,32 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 class main_listener implements EventSubscriberInterface
 {
-	protected $language;
+    /** @var \phpbb\template\template */
+    protected $template;
+    /** @var \phpbb\user */
+    protected $user;
     protected $phpbb_root_path;
 	protected $icon_url;
 	private $msg_counter = 0; // Para IDs únicos por mensaje
 
 	public function __construct(
-		\phpbb\language\language $language,
+        \phpbb\template\template $template,
+        \phpbb\user $user,
 		\phpbb\request\request_interface $request,
 		$phpbb_root_path
 	) {
-		$this->language = $language;
+		$this->template = $template;
+		$this->user = $user;
+		$this->user->add_lang_ext('rbm/ed2k', 'common');
+		$template_vars = [
+            'ED2K_MODAL_TITLE'       => $this->user->lang('ED2K_MODAL_TITLE'),
+            'ED2K_MODAL_SEND'       => $this->user->lang('ED2K_MODAL_SEND'),
+            'ED2K_MODAL_CLOSE'       => $this->user->lang('ED2K_MODAL_CLOSE'),
+            'ED2K_MODAL_COPIED'       => $this->user->lang('ED2K_MODAL_COPIED'),
+            'ED2K_MODAL_TEXTAREA_LABEL'       => $this->user->lang('ED2K_MODAL_TEXTAREA_LABEL'),
+        ];
+		$this->template->assign_vars($template_vars);
+
 		// Obtener la ruta base del script mediante el servicio request
 		$script_name = $request->server('SCRIPT_NAME', '');
 		$script_dir = $script_name ? dirname($script_name) : '';
