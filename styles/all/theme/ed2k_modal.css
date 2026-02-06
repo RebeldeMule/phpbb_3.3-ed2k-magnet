@@ -126,7 +126,7 @@
 }
 
 .contenedor-elink {
-    display: flex;
+    display: inline-flex;
     align-items: flex-start;
     gap: 6px;
     width: 100%;

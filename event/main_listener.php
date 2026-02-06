@@ -103,7 +103,7 @@ class main_listener implements EventSubscriberInterface
 
 		// Construcción del HTML final
 		return sprintf(
-			'<div class="contenedor-elink">%s <a href="%s" target="_blank"><i class="icon fa-bar-chart fa-fw ed2k-stats" aria-hidden="true"></i></a> <img src="%sdonkey.gif" border="0" title="donkey link" style="padding-top: 3px;" /><a href="%s" class="postlink">%s&nbsp;&nbsp;[%s]</a></div>',
+			'<div class="contenedor-elink">%s <a href="%s" target="_blank"><i class="icon fa-bar-chart fa-fw ed2k-stats" aria-hidden="true"></i></a> <img src="%smule.gif" border="0" title="donkey link" style="padding-top: 3px;" /><a href="%s" class="postlink">%s&nbsp;&nbsp;[%s]</a></div>',
 			$checkbox,
 			$stats_url,
 			$this->icon_url,
@@ -155,7 +155,7 @@ class main_listener implements EventSubscriberInterface
 		);
 		
 		// Para el enlace visible y el href, usamos el enlace procesado normalmente
-		return "$checkbox <img src='{$this->icon_url}magnet.gif' alt='Magnet' title='Torrent Magnet'> <a href='" . htmlspecialchars($magnet_link) . "' class=\"postlink\">" . htmlspecialchars($magnet_name) . "</a>";
+		return "$checkbox <img src='{$this->icon_url}iman.gif' alt='Magnet' title='Torrent Magnet'> <a href='" . htmlspecialchars($magnet_link) . "' class=\"postlink\">" . htmlspecialchars($magnet_name) . "</a>";
 	}
 
 
