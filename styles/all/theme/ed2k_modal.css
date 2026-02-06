@@ -64,13 +64,13 @@
 #ed2k-modal-content h3 {
     margin-top: 5px;
     padding-bottom: 8px;
-    border-bottom: 1px solid #eee;
+    border-bottom: none;
     margin-bottom: 10px;
 }
 
 /* Botón de Cerrar */
 #ed2k-modal-close {
-    color: #aaa;
+    color: var(--main-color1, #aaa);
     position: absolute;
     top: 10px;
     right: 15px;
@@ -81,7 +81,7 @@
 
 #ed2k-modal-close:hover,
 #ed2k-modal-close:focus {
-    color: black;
+    color: var(--main-color2, #c70000);
     text-decoration: none;
 }
 
@@ -93,7 +93,7 @@
     margin-bottom: 10px;
     font-family: monospace;
     background-color: var(--color-3, #ffffff);
-    border: 1px solid #ccc;
+    border: 1px solid var(--border-color-1, #ccc);
     padding: 8px;
     resize: vertical;
     min-height: 150px;
