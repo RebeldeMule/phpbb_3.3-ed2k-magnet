@@ -6,6 +6,10 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 
 ## [Unreleased]
 
+## [1.0.3] - 2026-02-04
+### Initial Release
+- Iconos modificados.
+
 ## [1.0.2] - 2026-02-04
 ### Initial Release
 - Añadido soporte para múltiples idiomas.
