@@ -155,7 +155,7 @@ class main_listener implements EventSubscriberInterface
 		);
 		
 		// Para el enlace visible y el href, usamos el enlace procesado normalmente
-		return "$checkbox <img src='{$this->icon_url}iman.gif' alt='Magnet' title='Torrent Magnet'> <a href='" . htmlspecialchars($magnet_link) . "' class=\"postlink\">" . htmlspecialchars($magnet_name) . "</a>";
+		return "$checkbox <img src='{$this->icon_url}iman.gif' class='magnet-link' alt='Magnet' title='Torrent Magnet'> <a href='" . htmlspecialchars($magnet_link) . "' class=\"postlink\">" . htmlspecialchars($magnet_name) . "</a>";
 	}
 
 
